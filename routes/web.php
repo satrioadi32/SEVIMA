@@ -1,8 +1,10 @@
 <?php
 
+use App\Http\Controllers\PostController;
 use App\Http\Controllers\RegisterController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\SigninController;
+use App\Models\Post;
 
 /*
 |--------------------------------------------------------------------------
@@ -27,10 +29,15 @@ Route::get('/home', function(){
     ]);
 });
 
-Route::get('/materi-belajar', function(){
-    return view('materi', [
-        "title" => "Materi Belajar"
+
+Route::get('/materi-belajar', [PostController::class, 'index']);
+
+Route::get('materi-belajar/{slug}', function($slug){
+    return view('value', [
+        "title" => "Single Post",
+        "value" => Post::find($slug)
     ]);
+    
 });
 
 Route::get('/about', function(){
