@@ -32,13 +32,7 @@ Route::get('/home', function(){
 
 Route::get('/materi-belajar', [PostController::class, 'index']);
 
-Route::get('materi-belajar/{slug}', function($slug){
-    return view('value', [
-        "title" => "Single Post",
-        "value" => Post::find($slug)
-    ]);
-    
-});
+Route::get('materi-belajar/{post}', [PostController::class, 'show']);
 
 Route::get('/about', function(){
     return view('about', [
@@ -47,5 +41,4 @@ Route::get('/about', function(){
 });
 
 Route::get('/sign-in', [SigninController::class, 'index']);
-
 Route::get('/register', [RegisterController::class, 'index']);

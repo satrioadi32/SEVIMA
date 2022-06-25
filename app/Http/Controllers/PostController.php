@@ -15,10 +15,10 @@ class PostController extends Controller
         ]);
     }
 
-    public function show($slug){
-        return view('materil',[
+    public function show(Post $post){
+        return view('value', [
             "title" => "Single Post",
-            "materil" => Post::find($slug)
+            "value" => $post
         ]);
     }
 }
