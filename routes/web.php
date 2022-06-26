@@ -5,6 +5,7 @@ use App\Http\Controllers\RegisterController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\SigninController;
 use App\Models\Post;
+use App\Models\Kategori;
 
 /*
 |--------------------------------------------------------------------------
@@ -41,4 +42,22 @@ Route::get('/about', function(){
 });
 
 Route::get('/sign-in', [SigninController::class, 'index']);
+
 Route::get('/register', [RegisterController::class, 'index']);
+Route::post('/register', [RegisterController::class, 'store']);
+
+
+Route::get('kategoris', function(){
+    return view('kategoris', [
+        'title' => 'Kategori Materi Pembelajaran',
+        'kategoris' => Kategori::all()
+    ]);
+});
+
+Route::get('/kategoris/{kategori:slug}', function(Kategori $kategori){
+    return view('kategori', [
+        'title' => $kategori->name,
+        'materi' => $kategori->posts,
+        'kategori' => $kategori->name
+    ]);
+});

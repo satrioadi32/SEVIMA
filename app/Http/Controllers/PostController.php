@@ -17,7 +17,7 @@ class PostController extends Controller
 
     public function show(Post $post){
         return view('value', [
-            "title" => "Single Post",
+            "title" => "Penjelasan",
             "value" => $post
         ]);
     }
