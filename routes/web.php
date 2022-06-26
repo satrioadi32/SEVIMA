@@ -42,6 +42,7 @@ Route::get('/about', function(){
 });
 
 Route::get('/sign-in', [SigninController::class, 'index']);
+Route::post('/sign-in', [SigninController::class, 'autentikasi']);
 
 Route::get('/register', [RegisterController::class, 'index']);
 Route::post('/register', [RegisterController::class, 'store']);
